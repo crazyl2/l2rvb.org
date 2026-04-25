@@ -189,7 +189,7 @@
     }
     #countdown-box {
       background: rgba(10, 10, 30, 0.85);
-      display: none;
+      display: none !important;
       padding: 20px 25px;
       border-radius: 14px;
       margin: 0 auto 30px;
@@ -197,6 +197,8 @@
       border: 1px solid #4fc3f7;
       box-shadow: 0 0 20px rgba(0, 100, 255, 0.3);
       backdrop-filter: blur(6px);
+      visibility: hidden;
+      opacity: 0;
     }
     #countdown-box h2 {
       color: #ffcc00;
@@ -478,11 +480,14 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.88);
-      display: none;
+      display: none !important;
       justify-content: center;
       align-items: center;
       z-index: 9999;
       animation: fadeIn 0.4s ease;
+    }
+    #discordElegantModal.show {
+      display: flex !important;
     }
     @keyframes fadeIn {
       from { opacity: 0; } to { opacity: 1; }
@@ -1428,7 +1433,7 @@
         document.getElementById('donateModal').style.display = 'none';
       });
       document.querySelector('.close-discord').addEventListener('click', () => {
-        document.getElementById('discordElegantModal').style.display = 'none';
+        document.getElementById('discordElegantModal').classList.remove('show');
       });
       
       window.addEventListener('click', (e) => {
@@ -1439,7 +1444,7 @@
           document.getElementById('donateModal').style.display = 'none';
         }
         if (e.target === document.getElementById('discordElegantModal')) {
-          document.getElementById('discordElegantModal').style.display = 'none';
+          document.getElementById('discordElegantModal').classList.remove('show');
         }
       });
 
@@ -1447,9 +1452,14 @@
       setTimeout(() => {
         const modal = document.getElementById('discordElegantModal');
         if (modal) {
-          modal.style.display = 'flex';
+          modal.classList.add('show');
         }
       }, 5000);
+
+      // Close Discord modal
+      document.querySelector('.close-discord').addEventListener('click', () => {
+        document.getElementById('discordElegantModal').classList.remove('show');
+      });
     });
   </script>
 </body>
