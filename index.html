@@ -155,7 +155,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    /* Base Button Style - Shared Structure for ALL buttons */
+    /* Base Button Style - Original Style */
     nav a {
       color: #fff !important;
       text-decoration: none;
@@ -174,10 +174,9 @@
         inset 0 1px 0 rgba(255, 255, 255, 0.4),
         0 4px 6px rgba(0, 0, 0, 0.3);
       z-index: 1;
-      background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
-    }
-    nav a:not(.donate-btn) {
-      color: #000 !important;
+      background: linear-gradient(135deg, #c62828 0%, #8e0000 100%);
+      width: auto;
+      display: inline-block;
     }
     /* Shine Effect Layer (Shared) */
     nav a::before {
@@ -221,6 +220,14 @@
         0 8px 20px rgba(255, 215, 0, 0.4),
         0 0 15px rgba(255, 215, 0, 0.6);
       text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+    }
+    /* Other buttons (Events, Progression, Rewards, Classes, Download, Register) */
+    nav a:not(.donate-btn) {
+      background: linear-gradient(135deg, #c62828 0%, #8e0000 100%);
+      color: #fff !important;
+    }
+    nav a:not(.donate-btn):hover {
+      background: linear-gradient(135deg, #d32f2f 0%, #b71c1c 100%);
     }
     .hero {
       text-align: center;
