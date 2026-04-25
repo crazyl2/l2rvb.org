@@ -1430,6 +1430,7 @@
       document.querySelector('.close-discord').addEventListener('click', () => {
         document.getElementById('discordElegantModal').style.display = 'none';
       });
+      
       window.addEventListener('click', (e) => {
         if (e.target === document.getElementById('registerModal')) {
           document.getElementById('registerModal').style.display = 'none';
@@ -1442,8 +1443,12 @@
         }
       });
 
+      // Show Discord popup after 5 seconds
       setTimeout(() => {
-        document.getElementById('discordElegantModal').style.display = 'flex';
+        const modal = document.getElementById('discordElegantModal');
+        if (modal) {
+          modal.style.display = 'flex';
+        }
       }, 5000);
     });
   </script>
