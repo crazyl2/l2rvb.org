@@ -162,24 +162,43 @@
       font-size: 14px;
       transition: all 0.3s;
       white-space: nowrap;
+      padding: 6px 14px;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+    nav a:not(.donate-btn) {
+      background: linear-gradient(135deg, rgba(255, 77, 77, 0.8), rgba(255, 0, 0, 0.8));
+      box-shadow: 0 0 10px rgba(255, 77, 77, 0.5);
     }
     nav a:hover {
-      color: #ff9999;
+      color: #fff !important;
+      transform: scale(1.08);
       text-shadow: 0 0 8px #ff4d4d;
+      box-shadow: 0 0 20px rgba(255, 77, 77, 0.8);
+    }
+    nav a:not(.donate-btn)::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20px;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: rotate(25deg);
+      transition: all 0.6s;
+    }
+    nav a:not(.donate-btn):hover::before {
+      left: 150%;
     }
     nav a.donate-btn {
       background: linear-gradient(135deg, #FFD700, #FFA500);
       color: #000 !important;
-      padding: 6px 14px;
-      border-radius: 6px;
       font-weight: bold;
       text-shadow: none;
       box-shadow: 0 0 10px rgba(255, 165, 0, 0.5);
-      position: relative;
-      overflow: hidden;
     }
     nav a.donate-btn:hover {
-      transform: scale(1.08);
       box-shadow: 0 0 20px rgba(255, 140, 0, 0.8);
       color: #000 !important;
     }
