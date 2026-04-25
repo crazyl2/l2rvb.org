@@ -71,33 +71,10 @@
     }
     header {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       padding: 15px 0;
       border-bottom: 1px solid #2a2a3a;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .logo-img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid white;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-      background: transparent;
-      object-fit: contain;
-    }
-    .logo-text {
-      font-family: 'MedievalSharp', serif;
-      font-size: 26px;
-      letter-spacing: 1px;
-      color: #fff;
-    }
-    .logo-text span {
-      color: #ff4d4d;
     }
     .header-right {
       display: flex;
@@ -582,8 +559,6 @@
       }
     }
     @media (max-width: 768px) {
-      .logo-img { width: 50px; height: 50px; }
-      .logo-text { font-size: 22px; }
       .lang-btn { padding: 3px 6px; font-size: 12px; }
       nav a { font-size: 13px; }
       .hero h1 { font-size: 32px; }
@@ -601,8 +576,6 @@
       }
     }
     @media (max-width: 480px) {
-      .logo-img { width: 45px; height: 45px; }
-      .logo-text { font-size: 20px; }
       .lang-btn { padding: 2px 5px; font-size: 11px; }
       nav a { font-size: 12px; padding: 4px 8px; }
       .banner-link img {
@@ -696,9 +669,6 @@
   
     <div class="container">
       <header>
-       <div class="logo-container">
-                <img src="https://scontent.fccs10-1.fna.fbcdn.net/v/t39.30808-6/557902683_1094857292854304_6035076801605604435_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=1d70fc&_nc_ohc=xt7uuE4Qac8Q7kNvwF4vduj&_nc_oc=AdqmA9gACBGlFaF-KeIaZ0jz_fmYmD1t-1ppJq-xdp0NhUq2rnJ9a9JB3xAQ3ufn9OUj325-FQhbri3yIym4O61k&_nc_zt=23&_nc_ht=scontent.fccs10-1.fna&_nc_gid=n1c1wZF1ssmOdg72RYHT6Q&oh=00_Af1iFJ7jxLmX9omkLHoeQfXj1cXHP7qnXUCWH7WeFcRu2g&oe=69F1C49F" alt="L2 Red vs Blue" class="logo-img">          <div class="logo-text"><span>L2</span> Red vs Blue</div>
-        </div>
         <div class="header-right">
           <nav>
             <a href="#events" data-key="nav-events">Events</a>
