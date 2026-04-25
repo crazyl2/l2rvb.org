@@ -1393,9 +1393,10 @@
       });
     });
     const userLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
-    const supportedLangs = ['en', 'es', 'ru', 'ko', 'pt'];
+    // Portuguese (pt) is excluded from auto-detection; users must select it manually
+    const supportedLangsForAutoDetect = ['en', 'es', 'ru', 'ko'];
     const defaultLang = 'en';
-    const langToUse = supportedLangs.includes(userLang) ? userLang : defaultLang;
+    const langToUse = supportedLangsForAutoDetect.includes(userLang) ? userLang : defaultLang;
     translatePage(langToUse);
 
     const launchDate = new Date(Date.UTC(2026, 0, 31, 22, 30, 0)).getTime();
