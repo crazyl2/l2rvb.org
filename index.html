@@ -1394,11 +1394,11 @@
     });
     const userLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
     const supportedLangs = ['en', 'es', 'ru', 'ko', 'pt'];
-    const defaultLang = 'es';
+    const defaultLang = 'en';
     const langToUse = supportedLangs.includes(userLang) ? userLang : defaultLang;
     translatePage(langToUse);
-1380
-    = new Date(Date.UTC(2026,01031 920 22, 30, 0)).getTime();
+
+    const launchDate = new Date(Date.UTC(2026, 0, 31, 22, 30, 0)).getTime();
 
 
 
