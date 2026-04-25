@@ -1386,72 +1386,75 @@
       });
       document.documentElement.lang = lang;
     }
-    document.querySelectorAll('.lang-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        translatePage(lang);
+    document.addEventListener('DOMContentLoaded', function() {
+      const userLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
+      // Portuguese (pt) is excluded from auto-detection; users must select it manually
+      const supportedLangsForAutoDetect = ['en', 'es', 'ru', 'ko'];
+      const defaultLang = 'en';
+      const langToUse = supportedLangsForAutoDetect.includes(userLang) ? userLang : defaultLang;
+      translatePage(langToUse);
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.dataset.lang;
+          translatePage(lang);
+        });
       });
-    });
-    const userLang = (navigator.language || navigator.userLanguage).split('-')[0].toLowerCase();
-    // Portuguese (pt) is excluded from auto-detection; users must select it manually
-    const supportedLangsForAutoDetect = ['en', 'es', 'ru', 'ko'];
-    const defaultLang = 'en';
-    const langToUse = supportedLangsForAutoDetect.includes(userLang) ? userLang : defaultLang;
-    translatePage(langToUse);
 
-    const launchDate = new Date(Date.UTC(2026, 0, 31, 22, 30, 0)).getTime();
+      const launchDate = new Date(Date.UTC(2026, 0, 31, 22, 30, 0)).getTime();
 
+      const countdown = () => {
+        const now = new Date().getTime();
+        const diff = launchDate - now;
+        if (diff <= 0) {
+          document.getElementById('countdown-box').innerHTML = '<div style="color:#4caf50; font-size:26px; font-weight:bold;">✨ BETA ABERTA ONLINE ✨</div>';
+          return;
+        }
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+      };
+      setInterval(countdown, 1000);
+      countdown();
 
-
-    const countdown = () => {
-      const now = new Date().getTime();
-      const diff = launchDate - now;
-      if (diff <= 0) {
-        document.getElementById('countdown-box').innerHTML = '<div style="color:#4caf50; font-size:26px; font-weight:bold;">✨ BETA ABERTA ONLINE ✨</div>';
-        return;
-      }
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      document.getElementById('days').textContent = days.toString().padStart(2, '0');
-      document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-      document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-      document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-    };
-    setInterval(countdown, 1000);
-    countdown();
-    document.getElementById('register-link').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('registerModal').style.display = 'block';
-    });
-    document.getElementById('donate-link').addEventListener('click', (e) => {
-      e.preventDefault();
-      document.getElementById('donateModal').style.display = 'block';
-    });
-    document.querySelector('.close-reg').addEventListener('click', () => {
-      document.getElementById('registerModal').style.display = 'none';
-    });
-    document.querySelector('.close-donate').addEventListener('click', () => {
-      document.getElementById('donateModal').style.display = 'none';
-    });
-    document.querySelector('.close-discord').addEventListener('click', () => {
-      document.getElementById('discordElegantModal').style.display = 'none';
-    });
-    window.addEventListener('click', (e) => {
-      if (e.target === document.getElementById('registerModal')) {
+      document.getElementById('register-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('registerModal').style.display = 'block';
+      });
+      document.getElementById('donate-link').addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('donateModal').style.display = 'block';
+      });
+      document.querySelector('.close-reg').addEventListener('click', () => {
         document.getElementById('registerModal').style.display = 'none';
-      }
-      if (e.target === document.getElementById('donateModal')) {
+      });
+      document.querySelector('.close-donate').addEventListener('click', () => {
         document.getElementById('donateModal').style.display = 'none';
-      }
-      if (e.target === document.getElementById('discordElegantModal')) {
+      });
+      document.querySelector('.close-discord').addEventListener('click', () => {
         document.getElementById('discordElegantModal').style.display = 'none';
-      }
+      });
+      window.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('registerModal')) {
+          document.getElementById('registerModal').style.display = 'none';
+        }
+        if (e.target === document.getElementById('donateModal')) {
+          document.getElementById('donateModal').style.display = 'none';
+        }
+        if (e.target === document.getElementById('discordElegantModal')) {
+          document.getElementById('discordElegantModal').style.display = 'none';
+        }
+      });
+
+      setTimeout(() => {
+        document.getElementById('discordElegantModal').style.display = 'flex';
+      }, 5000);
     });
-    setTimeout(() => {
-      document.getElementById('discordElegantModal').style.display = 'flex';
-    }, 5000);
   </script>
 </body>
 </html>
